@@ -39,7 +39,7 @@ stockCtrl.getVersions= async (req, res) => {
         versionCd && (filter = {...filter, versionCdSap:versionCd } )
         year && (filter = {...filter, year} )
         
-        console.log('Filtro:', filter);
+        console.log('Filter:', filter);
 
         const versions = await Version.find(filter);
         res.json(versions);
@@ -58,10 +58,9 @@ stockCtrl.retrieveStockCount= async (req, res) => {
         const { modlCd, versionCd, year } = req.body;
         let resp ={};
         let filter = {};
-        //modlCd && (filter = {...filter, modlCdSap: ['SK','C6'] } )
-        modlCd && (filter = {...filter, 'v.modlCdSap': modlCd} )
-        versionCd && (filter = {...filter, 'v.versionCdSap':versionCd } )
-        year && (filter = {...filter, 'v.year': year} )
+        modlCd && (filter = {...filter, 'v.modlCdSap': ( Array.isArray(modlCd) ? { $in : modlCd} : modlCd)} )
+        versionCd && (filter = {...filter, 'v.versionCdSap':( Array.isArray(versionCd) ? { $in : versionCd} : versionCd) } )       
+        year && (filter = {...filter, 'v.year': ( Array.isArray(year) ? { $in : year} : year) } )
         resp.transactionId = 'UUID';
         resp.messageId = 23;
 
