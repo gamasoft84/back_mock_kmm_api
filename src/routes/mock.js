@@ -4,10 +4,10 @@ const router = Router();
 const { RequestPOVINdata, SubmitCustomerInformation } = require('../controllers/mock.controller');
 
 router.route('/RequestPOVINdata')
-    .get(RequestPOVINdata);
+    .post(RequestPOVINdata);
 
 router.route('/SubmitCustomerInformation')
-    .get(SubmitCustomerInformation);
+    .post(SubmitCustomerInformation);
 
 
 module.exports = router;
