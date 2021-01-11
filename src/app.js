@@ -12,5 +12,6 @@ app.use(express.json());
 
 // routes
 app.use('/api/gateway/', require('./routes/stock'));
+app.use('/api/gateway/', require('./routes/mock'));
 
 module.exports = app;
