@@ -56,15 +56,18 @@ stockCtrl.getVersions= async (req, res) => {
 stockCtrl.retrieveStockCount= async (req, res) => {
     try {
         const { modlCd, versionCd, year } = req.body;
+        let resp ={};
         let filter = {};
         //modlCd && (filter = {...filter, modlCdSap: ['SK','C6'] } )
         modlCd && (filter = {...filter, 'v.modlCdSap': modlCd} )
         versionCd && (filter = {...filter, 'v.versionCdSap':versionCd } )
         year && (filter = {...filter, 'v.year': year} )
-        
-        console.log('Filter:', filter);
+        resp.transactionId = 'UUID';
+        resp.messageId = 23;
 
-        const versions = await Version.aggregate(
+        let versions;
+        console.log('Filter:', filter);
+        versions = await Version.aggregate(
             [
                 {
                     "$project": {
@@ -101,12 +104,15 @@ stockCtrl.retrieveStockCount= async (req, res) => {
                 }
             ]
         );    
-        console.log('Total: ', versions);
-        res.json(versions);
+        resp.resultCode = 'GCORESU';
+        resp.data = versions;   
+        console.log('Total: ', resp.data.length);
+        res.json(resp);
     }
     catch (err) {
+        resp.resultCode = 'GCOREFA';
         res.status(400).json({
-            error: err
+            resp
         });
     }
 };
