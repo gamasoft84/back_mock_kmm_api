@@ -58,9 +58,9 @@ stockCtrl.RetrieveVehicleStockCount= async (req, res) => {
         const { modelCode, versionCode, modelYear, messageId, transactionId } = req.body;
         let resp ={};
         let filter = {};
-        modelCode && (filter = {...filter, 'v.modlCdSap': ( Array.isArray(modelCode) ? { $in : modelCode} : modelCode)} )
-        versionCode && (filter = {...filter, 'v.versionCdSap':( Array.isArray(versionCode) ? { $in : versionCode} : versionCode) } )       
-        modelYear && (filter = {...filter, 'v.year': ( Array.isArray(modelYear) ? { $in : modelYear} : modelYear) } )
+        modelCode && modelCode.length> 0 && (filter = {...filter, 'v.modlCdSap': ( Array.isArray(modelCode) ? { $in : modelCode} : modelCode)} )
+        versionCode && versionCode.length> 0&& (filter = {...filter, 'v.versionCdSap':( Array.isArray(versionCode) ? { $in : versionCode} : versionCode) } )       
+        modelYear && modelYear.length> 0&& (filter = {...filter, 'v.year': ( Array.isArray(modelYear) ? { $in : modelYear} : modelYear) } )
         resp.messageId = messageId ? messageId : 'KMM_' + new Date().getTime() + '';
         resp.transactionId = transactionId ? transactionId: 'VEHICLE_STOCK_COUNT_' + new Date().getTime() + '';
         resp.errorManagement = {
