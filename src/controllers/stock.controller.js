@@ -110,6 +110,8 @@ stockCtrl.RetrieveVehicleStockCount= async (req, res) => {
         resp.resultCode = 'GCORESU';
         resp.data = versions;   
         console.log('Total: ', resp.data.length);
+        //log
+        registerInLog(resp.messageId, resp.transactionId, req.body, resp, resp.resultCode);
         res.json(resp);
     }
     catch (err) {

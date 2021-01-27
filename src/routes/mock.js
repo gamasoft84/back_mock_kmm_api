@@ -3,6 +3,13 @@ const router = Router();
 
 const { RequestPOVINdata, SubmitCustomerInformation } = require('../controllers/mock.controller');
 
+/*
+
+path: 
+/api/gateway/
+
+*/
+
 router.route('/RequestPOVINdata')
     .post(RequestPOVINdata);
 

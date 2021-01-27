@@ -1,4 +1,12 @@
+const registerInLog = require("../helpers/logHelper");
 const mockCtrl = {};
+
+/*
+
+path: 
+/api/gateway/RequestPOVINdata
+
+*/
 
 mockCtrl.RequestPOVINdata= async (req, res) => {
     try {
@@ -14,6 +22,8 @@ mockCtrl.RequestPOVINdata= async (req, res) => {
 
         console.log('RequestPOVINdata');
         resp.resultCode = 'GCORESU';
+        //log
+        registerInLog(resp.messageId, resp.transactionId, req.body, resp, resp.resultCode);
         res.json(resp);
     }
     catch (err) {
@@ -39,6 +49,8 @@ mockCtrl.SubmitCustomerInformation= async (req, res) => {
 
         console.log('SubmitCustomerInformation');
         resp.resultCode = 'GCORESU';
+        //log
+        registerInLog(resp.messageId, resp.transactionId, req.body, resp, resp.resultCode);
         res.json(resp);
     }
     catch (err) {
