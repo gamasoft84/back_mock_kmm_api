@@ -23,7 +23,7 @@ mockCtrl.RequestPOVINdata= async (req, res) => {
         console.log('RequestPOVINdata');
         resp.resultCode = 'GCORESU';
         //log
-        registerInLog(resp.messageId, resp.transactionId, req.body, resp, resp.resultCode);
+        registerInLog('RequestPOVINdata',resp.messageId, resp.transactionId, req.body, resp, resp.resultCode);
         res.json(resp);
     }
     catch (err) {
@@ -50,7 +50,7 @@ mockCtrl.SubmitCustomerInformation= async (req, res) => {
         console.log('SubmitCustomerInformation');
         resp.resultCode = 'GCORESU';
         //log
-        registerInLog(resp.messageId, resp.transactionId, req.body, resp, resp.resultCode);
+        registerInLog('SubmitCustomerInformation',resp.messageId, resp.transactionId, req.body, resp, resp.resultCode);
         res.json(resp);
     }
     catch (err) {
@@ -77,7 +77,7 @@ mockCtrl.SubmitLeadData= async (req, res) => {
         console.log('SubmitLeadData');
         resp.resultCode = 'GCORESU';
         //log
-        registerInLog(resp.messageId, resp.transactionId, req.body, resp, resp.resultCode);
+        registerInLog('SubmitLeadData',resp.messageId, resp.transactionId, req.body, resp, resp.resultCode);
         res.json(resp);
     }
     catch (err) {
@@ -104,7 +104,7 @@ mockCtrl.SubmitCheckinLeadData= async (req, res) => {
         console.log('SubmitCheckinLeadData');
         resp.resultCode = 'GCORESU';
         //log
-        registerInLog(resp.messageId, resp.transactionId, req.body, resp, resp.resultCode);
+        registerInLog('SubmitCheckinLeadData',resp.messageId, resp.transactionId, req.body, resp, resp.resultCode);
         res.json(resp);
     }
     catch (err) {
@@ -130,7 +130,7 @@ mockCtrl.SubmitTestDriveFeedback= async (req, res) => {
         console.log('SubmitTestDriveFeedback');
         resp.resultCode = 'GCORESU';
         //log
-        registerInLog(resp.messageId, resp.transactionId, req.body, resp, resp.resultCode);
+        registerInLog('SubmitTestDriveFeedback',resp.messageId, resp.transactionId, req.body, resp, resp.resultCode);
         res.json(resp);
     }
     catch (err) {
@@ -156,7 +156,7 @@ mockCtrl.SubmitPOVINdata= async (req, res) => {
         console.log('SubmitPOVINdata');
         resp.resultCode = 'GCORESU';
         //log
-        registerInLog(resp.messageId, resp.transactionId, req.body, resp, resp.resultCode);
+        registerInLog('SubmitPOVINdata',resp.messageId, resp.transactionId, req.body, resp, resp.resultCode);
         res.json(resp);
     }
     catch (err) {
@@ -182,7 +182,7 @@ mockCtrl.SubmitInvoiceVINdata= async (req, res) => {
         console.log('SubmitInvoiceVINdata');
         resp.resultCode = 'GCORESU';
         //log
-        registerInLog(resp.messageId, resp.transactionId, req.body, resp, resp.resultCode);
+        registerInLog('SubmitInvoiceVINdata',resp.messageId, resp.transactionId, req.body, resp, resp.resultCode);
         res.json(resp);
     }
     catch (err) {
@@ -208,7 +208,7 @@ mockCtrl.SubmitVehicleDetailData= async (req, res) => {
         console.log('SubmitVehicleDetailData');
         resp.resultCode = 'GCORESU';
         //log
-        registerInLog(resp.messageId, resp.transactionId, req.body, resp, resp.resultCode);
+        registerInLog('SubmitVehicleDetailData',resp.messageId, resp.transactionId, req.body, resp, resp.resultCode);
         res.json(resp);
     }
     catch (err) {
@@ -235,7 +235,7 @@ mockCtrl.SubmitStaffData= async (req, res) => {
         console.log('SubmitStaffData');
         resp.resultCode = 'GCORESU';
         //log
-        registerInLog(resp.messageId, resp.transactionId, req.body, resp, resp.resultCode);
+        registerInLog('SubmitStaffData',resp.messageId, resp.transactionId, req.body, resp, resp.resultCode);
         res.json(resp);
     }
     catch (err) {
