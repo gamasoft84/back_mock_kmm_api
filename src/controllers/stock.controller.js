@@ -1,3 +1,4 @@
+const registerInLog = require("../helpers/logHelper");
 const stockCtrl = {};
 
 const Color = require('../models/Color');
@@ -111,7 +112,7 @@ stockCtrl.RetrieveVehicleStockCount= async (req, res) => {
         resp.data = versions;   
         console.log('Total: ', resp.data.length);
         //log
-        registerInLog(resp.messageId, resp.transactionId, req.body, resp, resp.resultCode);
+        registerInLog('RetrieveVehicleStockCount',resp.messageId, resp.transactionId, req.body, resp, resp.resultCode);
         res.json(resp);
     }
     catch (err) {
