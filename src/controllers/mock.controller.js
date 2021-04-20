@@ -1,4 +1,6 @@
+const fetchSinToken = require("../helpers/fetch");
 const registerInLog = require("../helpers/logHelper");
+const Log = require("../models/Log");
 const mockCtrl = {};
 
 /*
@@ -240,6 +242,35 @@ mockCtrl.SubmitStaffData= async (req, res) => {
     }
     catch (err) {
         resp.resultCode = 'GCOREFA';
+        res.status(400).json({
+            resp
+        });
+    }
+};
+
+mockCtrl.tokenMC= async (req, res) => {
+    let resp ={};
+    try {
+        console.log('req.body',req.body);
+        const {grant_type, client_id, client_secret } = req.body;
+        
+        resp.grant_type = grant_type ? grant_type : 'No value';
+        resp.client_id = client_id ? client_id : 'No value';
+        resp.client_secret = client_secret ? client_secret : 'No value';
+        console.log('objBody', resp);
+
+        let respMC = await fetchSinToken('token',resp,'POST');
+        const data = await respMC.json();
+        data.grant_type = grant_type ? grant_type : 'No value';
+        data.client_id = client_id ? client_id : 'No value';
+        data.client_secret = client_secret ? client_secret : 'No value';
+        //log
+        registerInLog('tokenMC',resp.messageId, resp.transactionId, req.body, resp, resp.resultCode);
+        res.json(data);
+    }
+    catch (err) {
+        console.log(err)
+        resp.resultCode = 'Fail';
         res.status(400).json({
             resp
         });
