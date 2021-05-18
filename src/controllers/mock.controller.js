@@ -280,4 +280,54 @@ mockCtrl.tokenMC= async (req, res) => {
 
 
 
+mockCtrl.dataextensionsLead= async (req, res) => {
+    let resp ={};
+    try {
+        console.log('req.body',req.body);
+        const {grant_type, client_id, client_secret } = req.body;
+        
+        resp.grant_type = grant_type ? grant_type : 'No value';
+        resp.client_id = client_id ? client_id : 'No value';
+        resp.client_secret = client_secret ? client_secret : 'No value';
+        resp.requestId ="acf8897-fdaereh6-gfsgsrt4897"
+        console.log('objBody', resp);
+        //log
+        registerInLog('dataextensionsLead',resp.messageId, resp.transactionId, req.body, resp, resp.resultCode);
+        res.json(resp);
+    }
+    catch (err) {
+        console.log(err)
+        resp.resultCode = 'Fail';
+        res.status(400).json({
+            resp
+        });
+    }
+};
+
+mockCtrl.dataextensionsVehicle= async (req, res) => {
+    let resp ={};
+    try {
+        console.log('req.body',req.body);
+        const {grant_type, client_id, client_secret } = req.body;
+        
+        resp.grant_type = grant_type ? grant_type : 'No value';
+        resp.client_id = client_id ? client_id : 'No value';
+        resp.client_secret = client_secret ? client_secret : 'No value';
+        resp.requestId ="acf8897-fdaereh6-gfsgsrt4897"
+        console.log('objBody', resp);
+        //log
+        registerInLog('dataextensionsVehicle',resp.messageId, resp.transactionId, req.body, resp, resp.resultCode);
+        res.json(resp);
+    }
+    catch (err) {
+        console.log(err)
+        resp.resultCode = 'Fail';
+        res.status(400).json({
+            resp
+        });
+    }
+};
+
+
+
 module.exports = mockCtrl;
